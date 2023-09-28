@@ -4,7 +4,9 @@
     <a href="/about">Sobre Mi</a>
     <a href="/contact">Contáctame</a>
   </nav>
-  <a href="/" class="logo-title">Juan Borrero</a>
+  <div class="logo-title">
+    <a href="/">Juan Borrero</a>
+  </div>
   <nav class="socials">
     <a href="https://behance.net/juanbdesign" target="_blank">
       <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-behance" width="30" height="30" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -34,23 +36,24 @@
 
 <style>
   header {
+    position: relative;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1rem;
-    background-color: #111;
+    padding: 1rem 2rem;
+    background-color: hsl(var(--bg-dark));
   }
 
   nav {
     display: flex;
     align-items: center;
-    gap: 1rem;
+    gap: 1.5rem;
   }
   .pages {
-    font-size: 1.1rem;
+    font-size: 1.2rem;
   }
   .socials {
-    gap: 1.5rem;
+    gap: 2rem;
   }
 
   nav a {
@@ -59,24 +62,52 @@
     align-items: center;
     color: white;
     text-decoration: none;
+    z-index: 2;
   }
-  nav a:hover::after {
+  nav a::after {
     content: '';
     position: absolute;
-    top: -10%;
-    left: -10%;
-    width: 120%;
-    height: 120%;
-    border-radius: 5px;
-    background-color: #fff3;
-    z-index: 0;
+    top: 100%;
+    left: 50%;
+    width: 0;
+    height: 3px;
+    translate: -50%;
+    background-color: hsl(var(--accent-light));
+    transition: width 0.25s ease-in-out;
+  }
+  .pages a:hover::after,
+  .pages a:focus-visible::after {
+    width: 110%;
+  }
+  .socials a:hover::after,
+  .socials a:focus-visible::after {
+    width: 140%;
   }
 
   .logo-title {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .logo-title a {
     color: white;
     font-size: 1.5rem;
     font-weight: bold;
     font-family: 'Inner Tight', sans-serif;
     text-decoration: none;
+    transition: background-size 0.25s ease-in-out;
+
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-image: var(--accent-gradient);
+    background-size: 100%;
+    background-position: 0%;
+		background-clip: text;
+  }
+  .logo-title a:hover,
+  .logo-title a:focus-visible {
+    background-size: 400%;
   }
 </style>

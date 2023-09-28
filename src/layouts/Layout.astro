@@ -18,7 +18,7 @@ const { title } = Astro.props;
 		<title>{title}</title>
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-		<link href="https://fonts.googleapis.com/css2?family=Inner+Tight:wght@700&display=swap" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700&family=Onest:wght@400;600&display=swap" rel="stylesheet">
 	</head>
 	<body>
 		<Header />
@@ -27,19 +27,22 @@ const { title } = Astro.props;
 </html>
 <style is:global>
 	:root {
-		--accent: 136, 58, 234;
-		--accent-light: 224, 204, 250;
-		--accent-dark: 49, 10, 101;
+		--bg: 200, 10%, 9%;
+		--bg-light: 200, 10%, 20%;
+		--bg-dark: 200, 10%, 5%;
+		--accent: 20, 90%, 60%;
+		--accent-light: 20, 90%, 70%;
+		--accent-dark: 20, 90%, 40%;
 		--accent-gradient: linear-gradient(
 			45deg,
-			rgb(var(--accent)),
-			rgb(var(--accent-light)) 30%,
-			white 60%
+			hsl(var(--accent)),
+			hsl(var(--accent-light)) 25%,
+			white 50%
 		);
 	}
 	html {
-		font-family: system-ui, sans-serif;
-		background: #141617;
+		font-family: 'Onest', sans-serif;
+		background: hsl(var(--bg));
 		color: #fff;
 	}
 	body {
