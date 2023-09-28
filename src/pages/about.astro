@@ -1,0 +1,57 @@
+---
+import Layout from '../layouts/Layout.astro'
+---
+
+<Layout title="Sobre Mi - Juan Borrero">
+  <section class="about-section">
+    <h1>Sobre Mi</h1>
+    <div class="content">
+      <p>
+        Estudiante de diseño. Apasionado del diseño de interfaces y la creación digital en todas sus formas. Mi curiosidad y mis ganas de aprender me impulsan a explorar nuevas experiencias y adquirir conocimientos por cuenta propia. Disfruto embarcándome en nuevos proyectos y siempre estoy activo, buscando crear experiencias accesibles y mejorando dia a dia.
+      </p>
+      <picture>
+        <source srcset="/public/juanborrero.webp" media="(orientation: portrait)" />
+        <img src="/public/juanborrero.jpg" alt="Fotografía de Juan Borrero" />
+      </picture>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .about-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 4rem;
+    height: calc(100vh - 5rem);
+  }
+
+  .about-section h1 {
+    margin: 0;
+    font-size: 4rem;
+    font-weight: 700;
+    line-height: 1;
+  }
+
+  .about-section .content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 4rem;
+    max-width: 80vw;
+  }
+
+  .about-section p {
+    margin: 0;
+    max-width: 36ch;
+    font-size: 1.5rem;
+    line-height: 1.5;
+  }
+
+  .about-section img {
+    width: 20rem;
+    object-fit: cover;
+    object-position: center;
+  }
+</style>
