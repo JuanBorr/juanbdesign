@@ -1,0 +1,82 @@
+<header>
+  <nav class="pages">
+    <a href="/projects">Proyectos</a>
+    <a href="/about">Sobre Mi</a>
+    <a href="/contact">Contáctame</a>
+  </nav>
+  <a href="/" class="logo-title">Juan Borrero</a>
+  <nav class="socials">
+    <a href="https://behance.net/juanbdesign" target="_blank">
+      <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-behance" width="30" height="30" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+        <path d="M3 18v-12h4.5a3 3 0 0 1 0 6a3 3 0 0 1 0 6h-4.5"></path>
+        <path d="M3 12l4.5 0"></path>
+        <path d="M14 13h7a3.5 3.5 0 0 0 -7 0v2a3.5 3.5 0 0 0 6.64 1"></path>
+        <path d="M16 6l3 0"></path>
+      </svg>
+    </a>
+    <a href="https://instagram.com/juanbdesign" target="_blank">
+      <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-instagram" width="30" height="30" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+        <path d="M4 4m0 4a4 4 0 0 1 4 -4h8a4 4 0 0 1 4 4v8a4 4 0 0 1 -4 4h-8a4 4 0 0 1 -4 -4z"></path>
+        <path d="M12 12m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0"></path>
+        <path d="M16.5 7.5l0 .01"></path>
+      </svg>
+    </a>
+    <a href="https://github.com/juanborr" target="_blank">
+      <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="30" height="30" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+        <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5"></path>
+      </svg>
+    </a>
+  </nav>
+</header>
+
+<style>
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    background-color: #111;
+  }
+
+  nav {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  .pages {
+    font-size: 1.1rem;
+  }
+  .socials {
+    gap: 1.5rem;
+  }
+
+  nav a {
+    position: relative;
+    display: flex;
+    align-items: center;
+    color: white;
+    text-decoration: none;
+  }
+  nav a:hover::after {
+    content: '';
+    position: absolute;
+    top: -10%;
+    left: -10%;
+    width: 120%;
+    height: 120%;
+    border-radius: 5px;
+    background-color: #fff3;
+    z-index: 0;
+  }
+
+  .logo-title {
+    color: white;
+    font-size: 1.5rem;
+    font-weight: bold;
+    font-family: 'Inner Tight', sans-serif;
+    text-decoration: none;
+  }
+</style>
