@@ -1,0 +1,53 @@
+---
+import Layout from '../layouts/Layout.astro'
+import Card from '../components/Card.astro'
+
+import JuanProfileImg from '../assets/projects/juanborrero.jpg'
+---
+
+<Layout title="Proyectos - Juan Borrero">
+  <section>
+    <h1>Proyectos</h1>
+    <p>Estos son algunos de los proyectos en los que he trabajado.</p>
+    <ul role="list">
+      <Card
+        title="Juan Borrero"
+        description="Mi sitio web personal"
+        image={JuanProfileImg}
+        href="https://juanbdesign.vercel.app"
+      />
+    </ul>
+  </section>
+</Layout>
+
+<style>
+  section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    padding-block: 2rem 4rem;
+    min-height: 100vh;
+  }
+
+  section h1 {
+    margin: 0;
+    font-size: 4rem;
+    font-weight: 700;
+    line-height: 1;
+  }
+
+  section p {
+    margin: 0;
+    font-size: 1.5rem;
+    font-weight: 400;
+    line-height: 1.5;
+  }
+
+  ul {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(300px, 1fr));
+    gap: 2rem;
+  }
+</style>
