@@ -1,6 +1,8 @@
 ---
 import Layout from '../layouts/Layout.astro'
 import Card from '../components/Card.astro'
+
+import JuanProfileImg from '../assets/projects/juanborrero.jpg'
 ---
 
 <Layout title="Juan Borrero - Portafolio">
@@ -15,16 +17,38 @@ import Card from '../components/Card.astro'
 				experiencia del usuario.
 			</p>
 		</section>
-    <ul role="list" class="projects-grid">
-    </ul>
+    <section class="projects-section">
+      <h2>Proyectos Destacados</h2>
+      <ul role="list" class="projects-grid">
+        <Card
+          title="Juan Borrero"
+          description="Mi sitio web personal"
+          image={JuanProfileImg}
+          href="https://juanbdesign.vercel.app"
+        />
+        <Card
+          title="Juan Borrero"
+          description="Mi sitio web personal"
+          image={JuanProfileImg}
+          href="https://juanbdesign.vercel.app"
+        />
+        <Card
+          title="Juan Borrero"
+          description="Mi sitio web personal"
+          image={JuanProfileImg}
+          href="https://juanbdesign.vercel.app"
+        />
+      </ul>
+    </section>
   </main>
 </Layout>
 
 <style>
   main {
     margin: auto;
-    width: 800px;
-    max-width: calc(100% - 2rem);
+    padding: 0 4rem;
+    width: 100%;
+    max-width: 1200px;
     color: white;
     font-size: 20px;
     line-height: 1.6;
@@ -36,10 +60,9 @@ import Card from '../components/Card.astro'
 		align-items: center;
 		justify-content: center;
 		gap: 1rem;
-		min-height: calc(100vh - 4rem);
+		min-height: calc(100vh - 5rem);
 		text-align: center;
 	}
-
   h1 {
 		margin: 0;
 		font-size: 5rem;
@@ -52,21 +75,30 @@ import Card from '../components/Card.astro'
     background-image: var(--accent-gradient);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    background-size: 400%;
+    background-size: 200%;
     background-position: 0%;
 		background-clip: text;
   }
-
 	.description {
-		max-width: 60ch;
+		max-width: 50ch;
 		font-size: 1.45rem;
 		font-weight: 400;
 		line-height: 1.5;
 	}
 
-  .link-card-grid {
+  .projects-section {
+    margin-top: 5rem;
+    height: calc(100vh - 5rem);
+  }
+  .projects-section h2 {
+    font-size: 3rem;
+    margin-bottom: 2rem;
+    text-align: center;
+  }
+
+  .projects-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(24ch, 1fr));
+    grid-template-columns: repeat(3, minmax(24ch, 1fr));
     gap: 2rem;
     padding: 0;
   }
