@@ -1,6 +1,10 @@
 ---
 import Layout from '../layouts/Layout.astro'
 import Card from '../components/Card.astro'
+import pagina from '../assets/projects/web.jpg'
+import poster from '../assets/projects/poster.jpg'
+import revista from '../assets/projects/revista.jpg'
+import japan from '../assets/projects/japanese.jpg'
 
 import JuanProfileImg from '../assets/projects/juanborrero.jpg'
 ---
@@ -11,10 +15,28 @@ import JuanProfileImg from '../assets/projects/juanborrero.jpg'
     <p>Estos son algunos de los proyectos en los que he trabajado.</p>
     <ul role="list">
       <Card
-        title="Juan Borrero"
-        description="Mi sitio web personal"
-        image={JuanProfileImg}
-        href="https://juanbdesign.vercel.app"
+          title="revista"
+          description="Revista de Venus"
+          image={revista}
+          href="https://www.behance.net/gallery/179763757/Revista-Venus"
+        />
+        <Card
+          title="poster"
+          description="Poster de Silent Hill"
+          image={poster}
+          href="https://www.behance.net/gallery/179766499/Concepto-poster-Silent-Hill"
+        />
+        <Card
+          title="Juan Borrero"
+          description="Diseño de Portafolio"
+          image={pagina}
+          href="https://www.behance.net/gallery/161188549/Portfolio-Design"
+        />
+        <Card
+          title="poster"
+          description="Japanese Street Poster"
+          image={japan}
+          href="https://www.behance.net/gallery/181305745/Japanese-street-poster"
       />
     </ul>
   </section>
