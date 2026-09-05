@@ -4,25 +4,26 @@ Fecha: 2026-09-05
 
 ## Objetivo
 
-Reorganizar la propuesta aprobada “Póster cinético” como una experiencia multipágina dentro del mismo archivo de Figma. La nueva estructura separará Inicio, Proyectos y Contacto para que cada sección tenga una intención clara, sin perder los ajustes visuales realizados por Juan en el frame actual.
+Reorganizar la propuesta aprobada “Póster cinético” como una experiencia multipágina dentro del mismo archivo de Figma. La composición larga original será el Inicio real y conservará una selección visual de cinco proyectos. Proyectos y Contacto existirán además como páginas internas con contenido completo y una organización específica para cada propósito.
 
 ## Decisión aprobada
 
-Se crearán tres páginas independientes en el panel lateral de Figma:
+Se mantendrán tres páginas principales en el panel lateral de Figma:
 
 1. `01 · Inicio`
 2. `02 · Proyectos`
 3. `03 · Contacto`
 
-La página actual se conservará como `00 · Respaldo — composición completa`. Esta copia no se modificará y permitirá recuperar cualquier ajuste anterior.
+La composición actualmente nombrada `00 · Respaldo — composición completa` se convertirá en `01 · Inicio`. La versión corta de Inicio creada durante la primera reorganización se conservará como `99 · Archivo — inicio corto`, fuera del flujo principal, para mantener una copia recuperable.
 
 ## Principios de preservación
 
 - Mantener el lenguaje visual del póster cinético: fondo claro, tipografía condensada, acento naranja, retícula editorial y esquinas rectas.
-- Conservar las posiciones, escalas y textos modificados recientemente en el hero y en las tarjetas de proyecto.
+- Conservar las posiciones, escalas y textos modificados recientemente en el hero, la galería, el manifiesto y el cierre de contacto.
 - Mantener todo el texto como capas de texto editables; no convertir letras en vectores.
 - Reutilizar las imágenes ya cargadas en el archivo de Figma.
-- Eliminar de la nueva página de proyectos la tarjeta duplicada de “Diseño de Portafolio”. El respaldo conservará el estado actual sin cambios.
+- Eliminar la tarjeta duplicada de “Diseño de Portafolio” tanto en Inicio como en Proyectos.
+- Sustituir fuentes faltantes por Archivo Narrow y Archivo Black sin alterar el contenido.
 
 ## Página 01 · Inicio
 
@@ -31,23 +32,26 @@ La pantalla de Inicio incluirá:
 - Navegación superior con accesos a Inicio, Proyectos y Contacto.
 - Hero con el nombre “Juan Borrero”, retrato, descripción y CTA existentes.
 - El nuevo párrafo editorial agregado por Juan.
+- Los cinco proyectos: Revista de Venus, Silent Hill, Diseño de Portafolio, Japanese Street y Chocolicious.
+- La cuadrícula irregular y dinámica funcionará como selección editorial, no como catálogo exhaustivo.
 - Cinta cinética de disciplinas.
 - Manifiesto o presentación breve.
+- Bloque resumido de contacto con enlace a la página completa.
 - Footer compacto con enlaces sociales.
 
-No incluirá la cuadrícula completa de proyectos ni el bloque de contacto de gran tamaño. El CTA principal llevará conceptualmente a la página Proyectos.
+El CTA principal y el enlace Proyectos del header llevarán conceptualmente a la página Proyectos. El enlace Contáctame y el cierre tipográfico llevarán a Contacto. `Sobre mí` permanecerá asociado al manifiesto incluido en Inicio.
 
 ## Página 02 · Proyectos
 
 La pantalla de Proyectos incluirá:
 
 - La misma navegación superior para mantener continuidad.
-- Encabezado editorial “Proyectos seleccionados”.
-- Cuadrícula asimétrica con los cinco proyectos únicos y la organización visual creada por Juan.
+- Encabezado editorial “Proyectos”.
+- Cuadrícula ordenada con los cinco proyectos únicos.
 - Nombre, disciplina, año y acción de cada proyecto.
 - Footer compacto.
 
-La composición conservará el ritmo irregular del diseño actual, pero comenzará cerca del encabezado para evitar el espacio destinado al hero de Inicio.
+La composición usará dos columnas claras, tarjetas alineadas y un ritmo vertical consistente. Mantendrá diferencias de escala moderadas para conservar personalidad, pero evitará los desplazamientos extremos de Inicio. Esta página quedará preparada para añadir proyectos nuevos sin rehacer toda la retícula.
 
 ## Página 03 · Contacto
 
@@ -64,15 +68,17 @@ La página mantendrá bastante espacio negativo para diferenciarla de la densida
 
 ## Navegación y prototipo
 
-Los tres frames principales se nombrarán con claridad según su página. Si las capacidades de edición disponibles lo permiten, los enlaces de navegación se conectarán como interacciones de prototipo entre los frames. Si no fuera posible, la jerarquía y los nombres quedarán preparados para conectarlos manualmente sin ambigüedad.
+Los tres frames principales se nombrarán con claridad según su página y compartirán el mismo header. Proyectos y Contáctame se marcarán como enlaces hacia sus páginas internas. Como Figma separa los prototipos por página, se usarán interacciones compatibles cuando sea posible; en caso contrario, los nodos tendrán nombres y destinos explícitos para representar sin ambigüedad las rutas reales `/projects` y `/contact` del sitio.
 
 ## Verificación
 
 Antes de entregar se comprobará:
 
-1. Que existan tres páginas separadas y un respaldo intacto.
-2. Que cada página contenga un único frame principal de escritorio.
-3. Que las cinco tarjetas de proyecto aparezcan una sola vez en Proyectos.
-4. Que todo el texto siga siendo editable y no existan letras convertidas en vectores.
-5. Que no haya contenido cortado, solapamientos accidentales o grandes vacíos heredados de la composición larga.
-6. Que Inicio, Proyectos y Contacto compartan navegación, estilos y footer.
+1. Que existan tres páginas principales y una página archivada de respaldo.
+2. Que la composición completa original sea la página Inicio.
+3. Que Inicio y Proyectos muestren exactamente cinco tarjetas únicas cada uno.
+4. Que Proyectos use una retícula más ordenada que Inicio.
+5. Que Contacto conserve correo, redes, disponibilidad y CTA sin solapamientos.
+6. Que todo el texto siga siendo editable y no existan letras convertidas en vectores.
+7. Que no haya fuentes faltantes, contenido cortado o solapamientos accidentales.
+8. Que Inicio, Proyectos y Contacto compartan navegación, estilos y footer.
