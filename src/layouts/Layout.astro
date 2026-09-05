@@ -1,53 +1,168 @@
 ---
-import Header from '../components/Header.astro';
+import Header from '../components/Header.astro'
 import { ViewTransitions } from 'astro:transitions'
+
 interface Props {
-	title: string;
+  title: string
+  description?: string
 }
 
-const { title } = Astro.props;
+const {
+  title,
+  description = 'Portafolio de Juan Borrero, diseñador gráfico y creador de experiencias web accesibles.'
+} = Astro.props
 ---
 
 <!doctype html>
-<html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="description" content="Astro description" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
-		<title>{title}</title>
-		<ViewTransitions />
-		<link rel="preconnect" href="https://fonts.googleapis.com">
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-		<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700&family=Onest:wght@400;600&display=swap" rel="stylesheet">
-	</head>
-	<body>
-		<Header />
-		<slot />
-	</body>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content={description} />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#e9e9e4" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+    <ViewTransitions />
+    <script is:inline>document.documentElement.classList.add('js')</script>
+  </head>
+  <body>
+    <Header />
+    <slot />
+    <script>
+      const prepareReveals = () => {
+        const items = document.querySelectorAll<HTMLElement>('[data-reveal]:not([data-reveal-ready])')
+        const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+
+        if (reduced || !('IntersectionObserver' in window)) {
+          items.forEach((item) => item.classList.add('is-visible'))
+          return
+        }
+
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (!entry.isIntersecting) return
+            entry.target.classList.add('is-visible')
+            observer.unobserve(entry.target)
+          })
+        }, { threshold: 0.14 })
+
+        items.forEach((item) => {
+          item.dataset.revealReady = 'true'
+          observer.observe(item)
+        })
+      }
+
+      prepareReveals()
+      document.addEventListener('astro:page-load', prepareReveals)
+    </script>
+  </body>
 </html>
+
 <style is:global>
-	:root {
-		--bg: 200, 10%, 9%;
-		--bg-light: 200, 10%, 20%;
-		--bg-dark: 200, 10%, 5%;
-		--accent: 20, 90%, 60%;
-		--accent-light: 20, 90%, 70%;
-		--accent-dark: 20, 90%, 40%;
-		--accent-gradient: linear-gradient(
-			45deg,
-			hsl(var(--accent)),
-			hsl(var(--accent-light)) 25%,
-			white 50%
-		);
-	}
-	html {
-		font-family: 'Onest', sans-serif;
-		background: hsl(var(--bg));
-		color: #fff;
-	}
-	body {
-		margin: 0;
-	}
+  :root {
+    color-scheme: light;
+    --paper: #e9e9e4;
+    --ink: #171918;
+    --muted: #525753;
+    --accent: #db5f2e;
+    --line: #aeb1ac;
+    --max: 1380px;
+  }
+
+  * { box-sizing: border-box; }
+
+  html {
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+    background: var(--paper);
+  }
+
+  body {
+    margin: 0;
+    overflow-x: hidden;
+    color: var(--ink);
+    background-color: var(--paper);
+    background-image: radial-gradient(rgb(23 25 24 / 14%) 0.7px, transparent 0.7px);
+    background-size: 12px 12px;
+    font-family: "Arial Narrow", "Helvetica Neue", Arial, sans-serif;
+    line-height: 1.35;
+    text-rendering: geometricPrecision;
+  }
+
+  a { color: inherit; }
+  img { display: block; max-width: 100%; }
+
+  a:focus-visible,
+  button:focus-visible,
+  input:focus-visible,
+  textarea:focus-visible {
+    outline: 4px solid var(--accent);
+    outline-offset: 5px;
+  }
+
+  .frame {
+    width: min(calc(100% - 40px), var(--max));
+    margin-inline: auto;
+  }
+
+  .page-shell {
+    min-height: 100dvh;
+    padding-block: 138px 90px;
+  }
+
+  .page-title {
+    max-width: 10ch;
+    margin: 0;
+    font-size: clamp(4rem, 11vw, 10rem);
+    font-weight: 950;
+    letter-spacing: -0.085em;
+    line-height: 0.76;
+    text-transform: uppercase;
+  }
+
+  .page-intro {
+    max-width: 42ch;
+    margin: 36px 0 0;
+    padding-top: 18px;
+    border-top: 2px solid var(--ink);
+    color: var(--muted);
+    font-size: 1rem;
+    font-weight: 700;
+  }
+
+  .js [data-reveal] {
+    opacity: 0;
+    transform: translateY(48px);
+    transition: opacity 720ms cubic-bezier(.16, 1, .3, 1), transform 720ms cubic-bezier(.16, 1, .3, 1);
+  }
+
+  .js [data-reveal].from-left { transform: translateX(-44px); }
+  .js [data-reveal].from-right { transform: translateX(44px); }
+
+  .js [data-reveal].is-visible {
+    opacity: 1;
+    transform: translate(0);
+  }
+
+  @media (max-width: 640px) {
+    .frame { width: min(calc(100% - 28px), var(--max)); }
+    .page-shell { padding-block: 112px 64px; }
+    .page-title { max-width: none; font-size: clamp(3.1rem, 14vw, 4.5rem); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+    .js [data-reveal],
+    .js [data-reveal].from-left,
+    .js [data-reveal].from-right {
+      opacity: 1;
+      transform: none;
+    }
+  }
 </style>

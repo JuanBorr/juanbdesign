@@ -1,114 +1,373 @@
 ---
 import Layout from '../layouts/Layout.astro'
 import Card from '../components/Card.astro'
-import pagina from '../assets/projects/web.jpg'
-import poster from '../assets/projects/poster.jpg'
 import revista from '../assets/projects/revista.jpg'
+import poster from '../assets/projects/poster.jpg'
+import pagina from '../assets/projects/web.jpg'
 import japan from '../assets/projects/japanese.jpg'
 import choco from '../assets/projects/choco.jpg'
 ---
 
-<Layout title="Juan Borrero - Portafolio">
+<Layout title="Juan Borrero | Diseño gráfico y web">
   <main>
-    <section class="hero-section">
-			<h1>Hola, soy <br/>
-				<span class="text-gradient">Juan Borrero</span>
-			</h1>
-			<p class="description">
-				Diseñador web al que le encanta hacer productos digitales de todas las
-				formas y tamaños, creando experiencias accesibles con en el diseño y
-				experiencia del usuario.
-			</p>
-		</section>
-    <section class="projects-section">
-      <h2>Proyectos Destacados</h2>
-      <ul role="list" class="projects-grid">
+    <section class="hero frame" id="inicio">
+      <p class="hero-kicker">Diseño gráfico y web</p>
+      <h1 aria-label="Juan Borrero">
+        <span class="name-first">Juan</span>
+        <span class="name-last">Borrero</span>
+      </h1>
+      <img class="hero-portrait" src="/juanborrero.jpg" alt="Retrato de Juan Borrero" width="615" height="665" fetchpriority="high" />
+      <p class="hero-statement">Convierto ideas en experiencias digitales claras, accesibles y llenas de carácter.</p>
+      <a class="hero-action" href="#trabajo">Ver trabajo</a>
+    </section>
+
+    <section class="work-section frame" id="trabajo">
+      <div class="work-header" data-reveal>
+        <h2>Trabajo seleccionado</h2>
+        <p>Carteles, publicaciones e interfaces construidas desde una idea visual fuerte.</p>
+      </div>
+
+      <ul class="project-grid" role="list">
         <Card
+          index="01"
           title="Revista de Venus"
+          category="Diseño editorial y dirección de arte"
+          alt="Portada de la Revista Venus"
           image={revista}
+          placement="feature-left"
           href="https://www.behance.net/gallery/179763757/Revista-Venus"
         />
         <Card
-          title="Poster de Silent Hill"
+          index="02"
+          title="Silent Hill"
+          category="Concepto visual y póster"
+          alt="Póster conceptual de Silent Hill"
           image={poster}
+          placement="tall-right"
           href="https://www.behance.net/gallery/179766499/Concepto-poster-Silent-Hill"
         />
         <Card
+          index="03"
           title="Diseño de Portafolio"
+          category="Interfaz y experiencia web"
+          alt="Diseño de portafolio web con estética tecnológica"
           image={pagina}
+          placement="small-left"
           href="https://www.behance.net/gallery/161188549/Portfolio-Design"
         />
         <Card
-          title="Japanese Street Poster"
+          index="04"
+          title="Japanese Street"
+          category="Tipografía y composición"
+          alt="Póster inspirado en cultura urbana japonesa"
           image={japan}
+          placement="wide-right"
           href="https://www.behance.net/gallery/181305745/Japanese-street-poster"
         />
         <Card
-        title="Chocolicious Landing Page"
-        image={choco}
-        href="https://www.behance.net/gallery/181383799/Chocoliciuos"
-      />
+          index="05"
+          title="Chocolicious"
+          category="Identidad y landing page"
+          alt="Landing page de Chocolicious"
+          image={choco}
+          placement="center"
+          href="https://www.behance.net/gallery/181383799/Chocoliciuos"
+        />
       </ul>
     </section>
+
+    <div class="ticker" aria-label="Áreas de diseño">
+      <div class="ticker-track" aria-hidden="true">
+        <div class="ticker-group"><span>Identidad</span><span>/</span><span>Web</span><span>/</span><span>Editorial</span><span>/</span><span>Tipografía</span><span>/</span></div>
+        <div class="ticker-group"><span>Identidad</span><span>/</span><span>Web</span><span>/</span><span>Editorial</span><span>/</span><span>Tipografía</span><span>/</span></div>
+      </div>
+    </div>
+
+    <section class="manifesto frame" id="perfil">
+      <h2 class="from-left" data-reveal>Diseño para <span>entender</span> y recordar.</h2>
+      <div class="manifesto-copy from-right" data-reveal>
+        <p>Soy estudiante de diseño y creador digital. Aprendo haciendo, pruebo nuevas herramientas y cuido cada decisión visual.</p>
+        <ul class="skill-list" aria-label="Capacidades">
+          <li>Diseño web</li>
+          <li>Dirección de arte</li>
+          <li>Identidad visual</li>
+          <li>Accesibilidad</li>
+        </ul>
+        <a href="/about">Conocer mi perfil</a>
+      </div>
+    </section>
+
+    <section class="contact frame" id="contacto" data-reveal>
+      <p>¿Tienes un proyecto, una idea o una colaboración en mente?</p>
+      <a class="contact-link" href="/contact">Contáctame</a>
+    </section>
   </main>
+
+  <footer class="footer frame">
+    <span>Juan Borrero. Diseño gráfico y web.</span>
+    <div class="footer-links">
+      <a href="https://behance.net/juanbdesign" target="_blank" rel="noreferrer">Behance</a>
+      <a href="https://instagram.com/juanbdesign" target="_blank" rel="noreferrer">Instagram</a>
+      <a href="https://github.com/juanborr" target="_blank" rel="noreferrer">GitHub</a>
+    </div>
+  </footer>
 </Layout>
 
 <style>
-  main {
-    margin: auto;
-    padding: 0 4rem;
-    max-width: 1200px;
-    color: white;
-    font-size: 20px;
-    line-height: 1.6;
-  }
-
-	.hero-section {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		justify-content: center;
-		gap: 1rem;
-		min-height: calc(100vh - 5rem);
-		text-align: center;
-	}
-  h1 {
-		margin: 0;
-		font-size: 5rem;
-    font-weight: 700;
-    font-family: 'Inner Tight', sans-serif;
-    line-height: 1;
-		letter-spacing: -3px;
-  }
-  .text-gradient {
-    background-image: var(--accent-gradient);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-size: 200%;
-    background-position: 0%;
-		background-clip: text;
-  }
-	.description {
-		max-width: 50ch;
-		font-size: 1.45rem;
-		font-weight: 400;
-		line-height: 1.5;
-	}
-
-  .projects-section {
-    margin-top: 5rem;
-    height: calc(100vh - 5rem);
-  }
-  .projects-section h2 {
-    font-size: 3rem;
-    margin-bottom: 2rem;
-    text-align: center;
-  }
-
-  .projects-grid {
+  .hero {
+    position: relative;
+    overflow: clip;
+    min-height: 100dvh;
     display: grid;
-    grid-template-columns: repeat(3, minmax(15rem, 1fr));
-    gap: 2rem;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    grid-template-rows: minmax(86px, 0.6fr) auto auto minmax(34px, 0.4fr);
+    gap: 0 20px;
+    align-content: center;
+    padding-top: 76px;
+  }
+
+  .hero::after {
+    content: "";
+    position: absolute;
+    right: -3vw;
+    top: 19%;
+    width: clamp(120px, 20vw, 300px);
+    aspect-ratio: 1;
+    border: clamp(18px, 3vw, 42px) solid var(--accent);
+    border-radius: 50%;
+    z-index: -1;
+  }
+
+  .hero-kicker {
+    grid-column: 1 / span 4;
+    align-self: end;
+    margin: 0 0 16px;
+    color: var(--accent);
+    font-size: 0.76rem;
+    font-weight: 900;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+
+  h1 {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    margin: 0;
+    font-size: clamp(5rem, 12vw, 11rem);
+    font-weight: 950;
+    letter-spacing: -0.09em;
+    line-height: 0.67;
+    text-transform: uppercase;
+  }
+
+  .name-first { grid-column: 1 / span 7; }
+  .name-last { grid-column: 4 / -1; color: var(--accent); }
+
+  .hero-portrait {
+    grid-column: 1 / span 3;
+    grid-row: 3;
+    align-self: end;
+    width: 100%;
+    max-height: 260px;
+    margin-top: 44px;
+    border: 2px solid var(--ink);
+    object-fit: cover;
+    object-position: 50% 32%;
+    filter: grayscale(1) contrast(1.1);
+  }
+
+  .hero-statement {
+    grid-column: 5 / span 5;
+    grid-row: 3;
+    align-self: end;
+    margin: 44px 0 0;
+    font-size: clamp(1.15rem, 2.1vw, 1.85rem);
+    font-weight: 800;
+    letter-spacing: -0.025em;
+    line-height: 1.08;
+  }
+
+  .hero-action {
+    grid-column: 10 / -1;
+    grid-row: 3;
+    align-self: end;
+    min-height: 72px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 44px;
+    padding: 16px 20px;
+    border: 2px solid var(--ink);
+    color: var(--paper);
+    background: var(--ink);
+    font-size: 0.9rem;
+    font-weight: 900;
+    letter-spacing: 0.06em;
+    text-decoration: none;
+    text-transform: uppercase;
+    white-space: nowrap;
+    transition: color 180ms ease, background 180ms ease, transform 180ms ease;
+  }
+
+  .hero-action:hover { color: var(--ink); background: var(--accent); }
+  .hero-action:active { transform: scale(0.98); }
+
+  .work-section { padding-block: clamp(90px, 12vw, 170px); }
+  .work-header { max-width: 1180px; margin-bottom: clamp(54px, 8vw, 104px); }
+
+  .work-header h2 {
+    max-width: 9ch;
+    margin: 0;
+    font-size: clamp(3.7rem, 10vw, 9rem);
+    font-weight: 950;
+    letter-spacing: -0.08em;
+    line-height: 0.76;
+    text-transform: uppercase;
+  }
+
+  .work-header p {
+    max-width: 38ch;
+    margin: 32px 0 0;
+    padding-top: 16px;
+    border-top: 2px solid var(--ink);
+    color: var(--muted);
+    font-size: 0.95rem;
+    font-weight: 700;
+  }
+
+  .project-grid {
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    gap: clamp(44px, 7vw, 96px) 20px;
+    align-items: start;
+    margin: 0;
     padding: 0;
+  }
+
+  .ticker {
+    overflow: hidden;
+    border-block: 3px solid var(--ink);
+    color: var(--paper);
+    background: var(--ink);
+  }
+
+  .ticker-track {
+    display: flex;
+    width: max-content;
+    padding-block: 18px 15px;
+    font-size: clamp(2.2rem, 5vw, 5rem);
+    font-weight: 950;
+    letter-spacing: -0.05em;
+    line-height: 0.8;
+    text-transform: uppercase;
+  }
+
+  .ticker-group { display: flex; gap: 0.24em; padding-right: 0.24em; }
+  .ticker-group span:nth-child(even) { color: var(--accent); }
+
+  .manifesto {
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    gap: 20px;
+    align-items: start;
+    padding-block: clamp(100px, 14vw, 190px);
+  }
+
+  .manifesto h2 {
+    grid-column: 1 / span 9;
+    margin: 0;
+    font-size: clamp(3.2rem, 8.5vw, 8rem);
+    font-weight: 950;
+    letter-spacing: -0.08em;
+    line-height: 0.79;
+    text-transform: uppercase;
+  }
+
+  .manifesto h2 span { color: var(--accent); }
+
+  .manifesto-copy {
+    grid-column: 9 / -1;
+    margin-top: clamp(80px, 14vw, 190px);
+    padding-top: 24px;
+    border-top: 2px solid var(--ink);
+  }
+
+  .manifesto-copy p { margin: 0 0 28px; color: var(--muted); font-size: 1rem; font-weight: 700; }
+  .manifesto-copy > a { display: inline-block; margin-top: 28px; font-weight: 900; text-underline-offset: 5px; }
+
+  .skill-list { margin: 0; padding: 0; list-style: none; }
+  .skill-list li { display: inline; font-size: 0.9rem; font-weight: 900; }
+  .skill-list li:not(:last-child)::after { content: " / "; color: var(--accent); }
+
+  .contact { padding-block: clamp(90px, 14vw, 190px) 38px; border-top: 3px solid var(--ink); }
+  .contact p { max-width: 42ch; margin: 0 0 24px; color: var(--muted); font-weight: 700; }
+
+  .contact-link {
+    display: block;
+    width: fit-content;
+    color: var(--ink);
+    font-size: clamp(3rem, 10vw, 9rem);
+    font-weight: 950;
+    letter-spacing: -0.075em;
+    line-height: 0.9;
+    text-decoration-color: var(--accent);
+    text-decoration-thickness: 0.08em;
+    text-underline-offset: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    padding-block: 30px;
+    border-top: 2px solid var(--ink);
+    font-size: 0.76rem;
+    font-weight: 900;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+
+  .footer-links { display: flex; gap: 22px; }
+  .footer a { min-height: 44px; display: inline-flex; align-items: center; }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .ticker-track { animation: ticker 20s linear infinite; }
+    @keyframes ticker { to { transform: translateX(-50%); } }
+  }
+
+  @media (max-width: 860px) {
+    .hero { grid-template-columns: repeat(6, minmax(0, 1fr)); grid-template-rows: minmax(74px, .35fr) auto auto auto; gap: 0 14px; padding-bottom: 36px; }
+    .hero-kicker { grid-column: 1 / span 4; }
+    h1 { grid-column: 1 / -1; grid-template-columns: repeat(6, minmax(0, 1fr)); font-size: clamp(4.5rem, 18vw, 8.2rem); line-height: .73; }
+    .name-first { grid-column: 1 / span 5; }
+    .name-last { grid-column: 2 / -1; }
+    .hero-portrait { grid-column: 1 / span 2; }
+    .hero-statement { grid-column: 3 / -1; }
+    .hero-action { grid-column: 3 / -1; justify-self: start; min-height: 56px; margin-top: 24px; }
+    .manifesto h2 { grid-column: 1 / span 10; }
+    .manifesto-copy { grid-column: 7 / -1; }
+  }
+
+  @media (max-width: 640px) {
+    .hero { display: flex; min-height: 100dvh; flex-direction: column; justify-content: center; padding-block: 96px 36px; }
+    .hero::after { top: 18%; right: -18vw; }
+    .hero-kicker { margin-bottom: 28px; }
+    h1 { display: block; width: 100%; font-size: clamp(3.8rem, 17vw, 5.2rem); line-height: .79; }
+    .name-first, .name-last { display: block; }
+    .name-last { margin-left: 4vw; }
+    .hero-portrait { align-self: flex-start; width: 52%; min-width: 148px; max-height: 190px; margin-top: 34px; }
+    .hero-statement { align-self: flex-start; max-width: 24ch; margin: 24px 0 0; }
+    .hero-action { align-self: flex-start; width: auto; min-width: 180px; margin-top: 24px; }
+    .work-header h2 { max-width: none; font-size: clamp(2.6rem, 11vw, 3.2rem); }
+    .project-grid { grid-template-columns: 1fr; gap: 58px; }
+    .manifesto { display: block; }
+    .manifesto h2 { margin-bottom: 42px; }
+    .manifesto-copy { max-width: 36ch; margin-top: 0; }
+    .contact-link { font-size: clamp(2.8rem, 17vw, 5rem); }
+    .footer { align-items: flex-start; flex-direction: column; }
+    .footer-links { flex-wrap: wrap; }
   }
 </style>

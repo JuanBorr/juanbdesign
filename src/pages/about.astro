@@ -2,56 +2,138 @@
 import Layout from '../layouts/Layout.astro'
 ---
 
-<Layout title="Sobre Mi - Juan Borrero">
-  <section class="about-section">
-    <h1>Sobre Mi</h1>
-    <div class="content">
-      <p>
-        Estudiante de diseño. Apasionado del diseño de interfaces y la creación digital en todas sus formas. Mi curiosidad y mis ganas de aprender me impulsan a explorar nuevas experiencias y adquirir conocimientos por cuenta propia. Disfruto embarcándome en nuevos proyectos y siempre estoy activo, buscando crear experiencias accesibles y mejorando dia a dia.
-      </p>
-      <picture>
-        <source srcset="/juanborrero.webp" media="(orientation: portrait"/>
-        <img src="/juanborrero.jpg" alt="Fotografía de Juan Borrero"/>
-      </picture>
-    </div>
-  </section>
+<Layout title="Sobre mí | Juan Borrero" description="Perfil, enfoque y capacidades de Juan Borrero, diseñador gráfico y web.">
+  <main class="page-shell frame">
+    <section class="about-hero">
+      <h1 class="from-left" data-reveal>Diseño que se <span>entiende.</span></h1>
+      <img src="/juanborrero.jpg" alt="Retrato de Juan Borrero" width="615" height="665" data-reveal />
+      <div class="intro from-right" data-reveal>
+        <p>Soy estudiante de diseño. Me apasionan las interfaces y la creación digital en todas sus formas.</p>
+        <p>Mi curiosidad me impulsa a aprender por cuenta propia, explorar nuevas herramientas y construir experiencias cada vez más claras y accesibles.</p>
+      </div>
+    </section>
+
+    <section class="approach" data-reveal>
+      <h2>Cómo trabajo</h2>
+      <div class="approach-grid">
+        <article><strong>Observar</strong><p>Entiendo el contexto antes de decidir cómo debe verse una idea.</p></article>
+        <article><strong>Construir</strong><p>Convierto conceptos en sistemas visuales que funcionan en distintos formatos.</p></article>
+        <article><strong>Ajustar</strong><p>Pruebo, escucho y refino hasta que cada elemento cumple una función.</p></article>
+        <article><strong>Compartir</strong><p>Documento las decisiones para que el resultado pueda crecer con claridad.</p></article>
+      </div>
+    </section>
+
+    <section class="capabilities" data-reveal>
+      <h2>Capacidades</h2>
+      <ul>
+        <li>Diseño web</li>
+        <li>Dirección de arte</li>
+        <li>Diseño editorial</li>
+        <li>Identidad visual</li>
+        <li>Tipografía</li>
+        <li>Accesibilidad</li>
+      </ul>
+    </section>
+
+    <a class="contact-link" href="/contact" data-reveal>Contáctame</a>
+  </main>
 </Layout>
 
 <style>
-  .about-section {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 4rem;
-    height: calc(100vh - 5rem);
+  .about-hero {
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    gap: 20px;
+    align-items: start;
   }
 
-  .about-section h1 {
+  h1 {
+    grid-column: 1 / span 9;
     margin: 0;
-    font-size: 4rem;
-    font-weight: 700;
-    line-height: 1;
+    font-size: clamp(3.7rem, 9vw, 8.5rem);
+    font-weight: 950;
+    letter-spacing: -0.085em;
+    line-height: 0.78;
+    text-transform: uppercase;
   }
 
-  .about-section .content {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 4rem;
-    max-width: 80vw;
-  }
+  h1 span { color: var(--accent); }
 
-  .about-section p {
-    margin: 0;
-    max-width: 36ch;
-    font-size: 1.5rem;
-    line-height: 1.5;
-  }
-
-  .about-section img {
-    width: 20rem;
+  .about-hero img {
+    grid-column: 1 / span 4;
+    width: 100%;
+    max-height: 520px;
+    margin-top: clamp(58px, 9vw, 116px);
+    border: 2px solid var(--ink);
     object-fit: cover;
-    object-position: center;
+    object-position: 50% 32%;
+    filter: grayscale(1) contrast(1.08);
+  }
+
+  .intro {
+    grid-column: 7 / -1;
+    margin-top: clamp(110px, 18vw, 260px);
+    padding-top: 22px;
+    border-top: 2px solid var(--ink);
+  }
+
+  .intro p { max-width: 44ch; margin: 0 0 20px; color: var(--muted); font-size: clamp(1.05rem, 1.7vw, 1.35rem); font-weight: 700; }
+
+  .approach,
+  .capabilities { padding-block: clamp(96px, 13vw, 170px); }
+
+  h2 {
+    margin: 0 0 48px;
+    font-size: clamp(2.8rem, 6vw, 5rem);
+    font-weight: 950;
+    letter-spacing: -0.065em;
+    line-height: 0.82;
+    text-transform: uppercase;
+  }
+
+  .approach-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    border-top: 2px solid var(--ink);
+  }
+
+  article { min-height: 190px; padding: 24px 24px 44px 0; border-bottom: 2px solid var(--ink); }
+  article:nth-child(even) { padding-left: 24px; border-left: 2px solid var(--ink); }
+  article strong { color: var(--accent); font-size: 1.4rem; text-transform: uppercase; }
+  article p { max-width: 34ch; margin: 18px 0 0; color: var(--muted); font-weight: 700; }
+
+  .capabilities ul {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px 32px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .capabilities li { padding-block: 18px; border-bottom: 2px solid var(--ink); font-size: clamp(1.3rem, 2.4vw, 2rem); font-weight: 900; text-transform: uppercase; }
+
+  .contact-link {
+    display: block;
+    width: fit-content;
+    margin-block: 30px 80px;
+    color: var(--ink);
+    font-size: clamp(3.4rem, 11vw, 9rem);
+    font-weight: 950;
+    letter-spacing: -0.08em;
+    line-height: 0.9;
+    text-decoration-color: var(--accent);
+    text-decoration-thickness: 0.08em;
+    text-underline-offset: 0.12em;
+    text-transform: uppercase;
+  }
+
+  @media (max-width: 700px) {
+    .about-hero { display: block; }
+    h1 { font-size: clamp(3.4rem, 16vw, 5.2rem); }
+    .about-hero img { width: min(78%, 330px); margin-top: 54px; }
+    .intro { margin-top: 40px; }
+    .approach-grid, .capabilities ul { grid-template-columns: 1fr; }
+    article:nth-child(even) { padding-left: 0; border-left: 0; }
   }
 </style>
