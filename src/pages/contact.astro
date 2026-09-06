@@ -12,7 +12,7 @@ import Layout from '../layouts/Layout.astro'
     <div class="contact-layout">
       <aside data-reveal>
         <p>También puedes escribirme directamente:</p>
-        <a href="mailto:juanbdesign@gmail.com">juanbdesign@gmail.com</a>
+        <a href="mailto:fernandezborrerojuan@gmail.com">fernandezborrerojuan@gmail.com</a>
         <div class="socials">
           <a href="https://behance.net/juanbdesign" target="_blank" rel="noreferrer">Behance</a>
           <a href="https://instagram.com/juanbdesign" target="_blank" rel="noreferrer">Instagram</a>
@@ -20,7 +20,19 @@ import Layout from '../layouts/Layout.astro'
         </div>
       </aside>
 
-      <form action="/contact" method="POST" data-reveal>
+      <form
+        action="https://formsubmit.co/fernandezborrerojuan@gmail.com"
+        method="POST"
+        data-contact-form
+        data-reveal
+      >
+        <input type="hidden" name="_subject" value="Nuevo mensaje desde el portafolio" />
+        <input type="hidden" name="_template" value="table" />
+        <input type="hidden" name="_captcha" value="false" />
+        <label class="honey" aria-hidden="true">
+          <span>No completar este campo</span>
+          <input type="text" name="_honey" tabindex="-1" autocomplete="off" />
+        </label>
         <label for="name">
           <span>Nombre</span>
           <input type="text" id="name" name="name" maxlength="50" autocomplete="name" required />
@@ -31,9 +43,10 @@ import Layout from '../layouts/Layout.astro'
         </label>
         <label for="message">
           <span>Mensaje</span>
-          <textarea rows="6" id="message" name="message" required></textarea>
+          <textarea rows="5" id="message" name="message" maxlength="1500" required></textarea>
         </label>
-        <button type="submit">Enviar mensaje</button>
+        <button type="submit" data-submit-button>Enviar mensaje</button>
+        <p class="form-status" data-form-status aria-live="polite"></p>
       </form>
     </div>
   </main>
@@ -56,8 +69,8 @@ import Layout from '../layouts/Layout.astro'
 
   .contact-layout {
     display: grid;
-    grid-template-columns: minmax(260px, .7fr) minmax(0, 1.3fr);
-    gap: clamp(54px, 10vw, 150px);
+    grid-template-columns: minmax(360px, .85fr) minmax(0, 1.15fr);
+    gap: clamp(54px, 8vw, 110px);
     align-items: start;
   }
 
@@ -70,6 +83,7 @@ import Layout from '../layouts/Layout.astro'
   form { display: grid; gap: 28px; }
   label { display: grid; gap: 10px; }
   label span { font-size: .78rem; font-weight: 900; letter-spacing: .07em; text-transform: uppercase; }
+  .honey { position: absolute; left: -10000px; width: 1px; height: 1px; overflow: hidden; }
 
   input,
   textarea {
@@ -104,11 +118,73 @@ import Layout from '../layouts/Layout.astro'
 
   button:hover { color: var(--ink); background: var(--accent); }
   button:active { transform: scale(.98); }
+  button:disabled { cursor: wait; opacity: .68; }
 
-  @media (max-width: 700px) {
+  .form-status {
+    min-height: 1.4em;
+    margin: -10px 0 0;
+    color: var(--muted);
+    font-weight: 800;
+  }
+
+  .form-status[data-state="success"] { color: #28703d; }
+  .form-status[data-state="error"] { color: #a52d1f; }
+
+  @media (max-width: 900px) {
     h1 { font-size: clamp(3.5rem, 15vw, 5.8rem); }
     .contact-layout { grid-template-columns: 1fr; }
     aside { order: 2; }
     form { order: 1; }
   }
 </style>
+
+<script>
+  const setupContactForm = () => {
+    const form = document.querySelector<HTMLFormElement>('[data-contact-form]')
+    if (!form || form.dataset.ready === 'true') return
+
+    const button = form.querySelector<HTMLButtonElement>('[data-submit-button]')
+    const status = form.querySelector<HTMLElement>('[data-form-status]')
+    if (!button || !status) return
+
+    form.dataset.ready = 'true'
+
+    form.addEventListener('submit', async (event) => {
+      event.preventDefault()
+      if (!form.reportValidity()) return
+
+      const originalLabel = button.textContent
+      button.disabled = true
+      button.textContent = 'Enviando...'
+      status.dataset.state = 'loading'
+      status.textContent = 'Enviando tu mensaje...'
+
+      try {
+        const fields = Object.fromEntries(new FormData(form).entries())
+        const response = await fetch('https://formsubmit.co/ajax/fernandezborrerojuan@gmail.com', {
+          method: 'POST',
+          headers: {
+            Accept: 'application/json',
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(fields)
+        })
+
+        if (!response.ok) throw new Error('FormSubmit rejected the request')
+
+        form.reset()
+        status.dataset.state = 'success'
+        status.textContent = 'Mensaje enviado. Te responderé lo antes posible.'
+      } catch {
+        status.dataset.state = 'error'
+        status.textContent = 'No se pudo enviar. Inténtalo de nuevo o escríbeme directamente.'
+      } finally {
+        button.disabled = false
+        button.textContent = originalLabel
+      }
+    })
+  }
+
+  setupContactForm()
+  document.addEventListener('astro:page-load', setupContactForm)
+</script>
