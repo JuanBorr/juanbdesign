@@ -9,6 +9,7 @@ interface Props {
   index?: string
   category?: string
   placement?: 'feature-left' | 'tall-right' | 'small-left' | 'wide-right' | 'center' | 'lower-left' | 'lower-right'
+  variant?: 'asymmetric' | 'grid'
   alt?: string
 }
 
@@ -20,13 +21,14 @@ const {
   index,
   category = description,
   placement = 'center',
+  variant = 'asymmetric',
   alt = title
 } = Astro.props
 
 const isExternal = href.startsWith('http')
 ---
 
-<li class:list={['project-card', placement]} data-reveal>
+<li class:list={['project-card', placement, variant]} data-reveal>
   <a href={href} target={isExternal ? '_blank' : undefined} rel={isExternal ? 'noreferrer' : undefined}>
     <div class="project-image">
       <Image src={image} alt={alt} quality="mid" loading="lazy" />
@@ -49,6 +51,8 @@ const isExternal = href.startsWith('http')
   .center { grid-column: 4 / span 6; }
   .lower-left { grid-column: 1 / span 5; }
   .lower-right { grid-column: 7 / span 5; margin-top: 64px; }
+
+  .grid { grid-column: auto; margin-top: 0; }
 
   .project-image {
     position: relative;
@@ -75,6 +79,8 @@ const isExternal = href.startsWith('http')
 
   .tall-right .project-image :global(img),
   .small-left .project-image :global(img) { aspect-ratio: 3 / 4; }
+
+  .grid .project-image :global(img) { aspect-ratio: 4 / 3; }
 
   a:hover .project-image::after { border-color: var(--accent); }
   a:hover .project-image :global(img) { transform: scale(1.035); filter: contrast(1.06); }

@@ -18,6 +18,7 @@ import portfolio06 from '../assets/projects/diseno-de-portafolio/06.png'
 import chocolicious01 from '../assets/projects/chocolicious/01.png'
 import chocolicious02 from '../assets/projects/chocolicious/02.png'
 import iubDashboard from '../assets/projects/iub/IUB Student Dashboard.png'
+import iubCover from '../assets/projects/iub/cover.webp'
 import iubCalendar from '../assets/projects/iub/Calendar & Tasks (v1).png'
 import iubTasks from '../assets/projects/iub/Calendar & Tasks (v1)-1.png'
 import iubTasksTab from '../assets/projects/iub/IUB Tasks Tab.png'
@@ -26,12 +27,14 @@ import iubLogin from '../assets/projects/iub/Welcome Login.png'
 import herbEatsSplash from '../assets/projects/herbeats/Splash Screen HerbEats.png'
 import herbEatsLogin from '../assets/projects/herbeats/Inicio de Sesión.png'
 import herbEatsHome from '../assets/projects/herbeats/Página Principal.png'
+import herbEatsCover from '../assets/projects/herbeats/cover.webp'
 import herbEatsDishOne from '../assets/projects/herbeats/Detalle del Platillo 1.png'
 import herbEatsDishTwo from '../assets/projects/herbeats/Detalle del Platillo 2.png'
 import herbEatsPaymentOne from '../assets/projects/herbeats/Pago 1.png'
 import herbEatsPaymentTwo from '../assets/projects/herbeats/Pago 2.png'
 import herbEatsTracking from '../assets/projects/herbeats/Seguimiento del Pedido.png'
 import clickAndShootHome from '../assets/projects/click-and-shoot/Home.png'
+import clickAndShootCover from '../assets/projects/click-and-shoot/cover.webp'
 import clickAndShootAbout from '../assets/projects/click-and-shoot/Nostros.png'
 import clickAndShootServices from '../assets/projects/click-and-shoot/Servicios.png'
 import clickAndShootProjects from '../assets/projects/click-and-shoot/Proyectos.png'
@@ -105,7 +108,7 @@ export const projects: Project[] = [
     alt: 'Panel principal de la aplicación IUB',
     role: 'Diseño UI/UX para aplicación móvil',
     disciplines: ['UI/UX', 'Aplicación móvil', 'Sistema de interfaz'],
-    cover: iubDashboard,
+    cover: iubCover,
     gallery: [iubLogin, iubDashboard, iubCalendar, iubTasks, iubTasksTab, iubProfile],
     mockup: 'device',
     listingPlacement: 'small-left',
@@ -120,7 +123,7 @@ export const projects: Project[] = [
     alt: 'Pantalla principal de la aplicación HerbEats',
     role: 'Diseño UI/UX para aplicación móvil',
     disciplines: ['UI/UX', 'Aplicación móvil', 'Flujo de pedido'],
-    cover: herbEatsHome,
+    cover: herbEatsCover,
     gallery: [herbEatsSplash, herbEatsLogin, herbEatsHome, herbEatsDishOne, herbEatsDishTwo, herbEatsPaymentOne, herbEatsPaymentTwo, herbEatsTracking],
     mockup: 'device',
     listingPlacement: 'wide-right',
@@ -135,7 +138,7 @@ export const projects: Project[] = [
     alt: 'Página principal de Click and Shoot Studio',
     role: 'Diseño web y dirección visual',
     disciplines: ['Diseño web', 'Interfaz', 'Dirección visual'],
-    cover: clickAndShootHome,
+    cover: clickAndShootCover,
     gallery: [clickAndShootHome, clickAndShootAbout, clickAndShootServices, clickAndShootProjects, clickAndShootContact],
     mockup: 'browser',
     listingPlacement: 'lower-left',
