@@ -3,7 +3,7 @@ import Layout from '../layouts/Layout.astro'
 import Card from '../components/Card.astro'
 import { projects, projectUrl } from '../data/projects'
 
-const [revista, silentHill, portfolio, japaneseStreet, chocolicious] = projects
+const [revista, portfolio, iub, herbEats, clickAndShoot, chocolicious] = projects
 ---
 
 <Layout title="Juan Borrero | Diseño gráfico y web">
@@ -37,49 +37,49 @@ const [revista, silentHill, portfolio, japaneseStreet, chocolicious] = projects
           href={projectUrl(revista)}
         />
         <Card
-          index="02"
-          title={silentHill.title}
-          category={silentHill.category}
-          alt={silentHill.alt}
-          image={silentHill.cover}
-          placement="tall-right"
-          href={projectUrl(silentHill)}
-        />
-        <Card
-          index="03"
+          index={portfolio.number}
           title={portfolio.title}
           category={portfolio.category}
           alt={portfolio.alt}
           image={portfolio.cover}
-          placement="small-left"
+          placement="tall-right"
           href={projectUrl(portfolio)}
         />
         <Card
-          index="04"
-          title={japaneseStreet.title}
-          category={japaneseStreet.category}
-          alt={japaneseStreet.alt}
-          image={japaneseStreet.cover}
-          placement="wide-right"
-          href={projectUrl(japaneseStreet)}
+          index={iub.number}
+          title={iub.title}
+          category={iub.category}
+          alt={iub.alt}
+          image={iub.cover}
+          placement="small-left"
+          href={projectUrl(iub)}
         />
         <Card
-          index="05"
+          index={herbEats.number}
+          title={herbEats.title}
+          category={herbEats.category}
+          alt={herbEats.alt}
+          image={herbEats.cover}
+          placement="wide-right"
+          href={projectUrl(herbEats)}
+        />
+        <Card
+          index={clickAndShoot.number}
+          title={clickAndShoot.title}
+          category={clickAndShoot.category}
+          alt={clickAndShoot.alt}
+          image={clickAndShoot.cover}
+          placement="lower-left"
+          href={projectUrl(clickAndShoot)}
+        />
+        <Card
+          index={chocolicious.number}
           title={chocolicious.title}
           category={chocolicious.category}
           alt={chocolicious.alt}
           image={chocolicious.cover}
-          placement="lower-left"
-          href={projectUrl(chocolicious)}
-        />
-        <Card
-          index="03"
-          title={portfolio.title}
-          category={portfolio.category}
-          alt={portfolio.alt}
-          image={portfolio.cover}
           placement="lower-right"
-          href={projectUrl(portfolio)}
+          href={projectUrl(chocolicious)}
         />
       </ul>
     </section>

@@ -65,7 +65,7 @@ import Layout from '../layouts/Layout.astro'
     text-transform: uppercase;
   }
 
-  .contact-header p { max-width: 36ch; margin: 46px 0 0; padding-top: 18px; border-top: 2px solid var(--ink); color: var(--muted); font-size: 1.1rem; font-weight: 700; }
+  .contact-header p { max-width: 36ch; margin: clamp(66px, 8vw, 108px) 0 0; color: var(--muted); font-size: 1.1rem; font-weight: 700; }
 
   .contact-layout {
     display: grid;
@@ -74,7 +74,7 @@ import Layout from '../layouts/Layout.astro'
     align-items: start;
   }
 
-  aside { padding-top: 22px; border-top: 2px solid var(--ink); }
+  aside { padding-top: 0; }
   aside p { margin: 0 0 16px; color: var(--muted); font-weight: 700; }
   aside > a { font-size: clamp(1rem, 2vw, 1.4rem); font-weight: 900; overflow-wrap: anywhere; text-underline-offset: 5px; }
   .socials { display: flex; flex-wrap: wrap; gap: 18px; margin-top: 38px; }

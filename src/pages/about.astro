@@ -8,31 +8,43 @@ import Layout from '../layouts/Layout.astro'
       <h1 class="from-left" data-reveal>Diseño que se <span>entiende.</span></h1>
       <img src="/juanborrero.jpg" alt="Retrato de Juan Borrero" width="615" height="665" data-reveal />
       <div class="intro from-right" data-reveal>
-        <p>Soy estudiante de diseño. Me apasionan las interfaces y la creación digital en todas sus formas.</p>
-        <p>Mi curiosidad me impulsa a aprender por cuenta propia, explorar nuevas herramientas y construir experiencias cada vez más claras y accesibles.</p>
+        <p>Diseñador gráfico freelance desde 2024, especializado en edición de imágenes y fotografía, identidad visual y comunicación digital.</p>
+        <p>Desarrollo piezas visuales de alto impacto con atención al detalle, capacidad de adaptación y un enfoque creativo de principio a fin.</p>
       </div>
     </section>
 
     <section class="approach" data-reveal>
-      <h2>Cómo trabajo</h2>
+      <h2>Experiencia</h2>
       <div class="approach-grid">
-        <article><strong>Observar</strong><p>Entiendo el contexto antes de decidir cómo debe verse una idea.</p></article>
-        <article><strong>Construir</strong><p>Convierto conceptos en sistemas visuales que funcionan en distintos formatos.</p></article>
-        <article><strong>Ajustar</strong><p>Pruebo, escucho y refino hasta que cada elemento cumple una función.</p></article>
-        <article><strong>Compartir</strong><p>Documento las decisiones para que el resultado pueda crecer con claridad.</p></article>
+        <article><strong>Diseñador freelance</strong><span>2024 a la fecha</span><p>Diseño contenido gráfico para redes sociales, publicaciones, historias y piezas promocionales adaptadas a la identidad visual y objetivos comerciales de cada marca.</p></article>
+        <article><strong>Identidad visual</strong><span>Marcas y campañas</span><p>Desarrollo sistemas de marca, desde logotipo, paleta cromática y tipografías hasta aplicaciones para redes sociales y comunicación promocional.</p></article>
       </div>
     </section>
 
     <section class="capabilities" data-reveal>
-      <h2>Capacidades</h2>
+      <h2>Especialidades</h2>
       <ul>
-        <li>Diseño web</li>
-        <li>Dirección de arte</li>
+        <li>Branding</li>
         <li>Diseño editorial</li>
-        <li>Identidad visual</li>
-        <li>Tipografía</li>
-        <li>Accesibilidad</li>
+        <li>Packaging</li>
+        <li>UI/UX</li>
+        <li>Modelaje 3D</li>
+        <li>Edición fotográfica</li>
+        <li>Diseño publicitario</li>
       </ul>
+    </section>
+
+    <section class="education" data-reveal>
+      <h2>Formación</h2>
+      <div class="education-list">
+        <article><span>2026 a la fecha</span><strong>Profesional en Diseño Gráfico</strong><p>Institución Universitaria de Barranquilla</p></article>
+        <article><span>2023 a 2025</span><strong>Tecnólogo en Diseño Gráfico</strong><p>Institución Universitaria de Barranquilla</p></article>
+      </div>
+    </section>
+
+    <section class="tools" data-reveal>
+      <h2>Herramientas</h2>
+      <p>Illustrator / Photoshop / InDesign / Figma / After Effects / Blender / Premiere</p>
     </section>
 
     <a class="contact-link" href="/contact" data-reveal>Contáctame</a>
@@ -100,6 +112,7 @@ import Layout from '../layouts/Layout.astro'
   article { min-height: 190px; padding: 24px 24px 44px 0; border-bottom: 2px solid var(--ink); }
   article:nth-child(even) { padding-left: 24px; border-left: 2px solid var(--ink); }
   article strong { color: var(--accent); font-size: 1.4rem; text-transform: uppercase; }
+  article span { display: block; margin-top: 8px; color: var(--muted); font-size: .74rem; font-weight: 900; letter-spacing: .06em; text-transform: uppercase; }
   article p { max-width: 34ch; margin: 18px 0 0; color: var(--muted); font-weight: 700; }
 
   .capabilities ul {
@@ -112,6 +125,14 @@ import Layout from '../layouts/Layout.astro'
   }
 
   .capabilities li { padding-block: 18px; border-bottom: 2px solid var(--ink); font-size: clamp(1.3rem, 2.4vw, 2rem); font-weight: 900; text-transform: uppercase; }
+
+  .education,
+  .tools { padding-block: clamp(72px, 10vw, 130px); }
+  .education-list { display: grid; grid-template-columns: 1fr 1fr; border-top: 2px solid var(--ink); }
+  .education-list article { min-height: 0; }
+  .education-list strong { display: block; margin-top: 18px; }
+  .tools { border-top: 2px solid var(--ink); }
+  .tools p { max-width: 36ch; margin: 0; color: var(--muted); font-size: clamp(1.3rem, 2.4vw, 2rem); font-weight: 900; line-height: 1.08; }
 
   .contact-link {
     display: block;
@@ -133,7 +154,7 @@ import Layout from '../layouts/Layout.astro'
     h1 { font-size: clamp(3.4rem, 16vw, 5.2rem); }
     .about-hero img { width: min(78%, 330px); margin-top: 54px; }
     .intro { margin-top: 40px; }
-    .approach-grid, .capabilities ul { grid-template-columns: 1fr; }
+    .approach-grid, .capabilities ul, .education-list { grid-template-columns: 1fr; }
     article:nth-child(even) { padding-left: 0; border-left: 0; }
   }
 </style>
