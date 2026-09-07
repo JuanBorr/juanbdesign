@@ -116,6 +116,8 @@ const nextProject = projects[(projectIndex + 1) % projects.length]
 
   .case-cover {
     grid-column: 3 / -1;
+    display: grid;
+    place-items: center;
     border: 2px solid var(--ink);
     background: var(--ink);
   }
@@ -150,11 +152,11 @@ const nextProject = projects[(projectIndex + 1) % projects.length]
     display: flex;
     flex-direction: column;
     gap: clamp(28px, 4vw, 62px);
-    align-items: flex-start;
+    align-items: center;
   }
 
-  .gallery-item { width: fit-content; max-width: 100%; margin: 0; border: 2px solid var(--ink); background: #d0d2cc; overflow: hidden; }
-  .gallery-item :global(img) { width: auto; max-width: 100%; height: auto; transition: transform 600ms cubic-bezier(.16, 1, .3, 1); }
+  .gallery-item { width: fit-content; max-width: 100%; margin: 0 auto; border: 2px solid var(--ink); background: #d0d2cc; overflow: hidden; }
+  .gallery-item :global(img) { display: block; width: auto; max-width: 100%; height: auto; transition: transform 600ms cubic-bezier(.16, 1, .3, 1); }
   .gallery-item:hover :global(img) { transform: scale(1.01); }
   .mockup-device { padding: 10px; background: var(--ink); box-shadow: 10px 10px 0 rgb(23 25 24 / 18%); }
   .mockup-browser { position: relative; padding: 30px 10px 10px; background: var(--ink); box-shadow: 10px 10px 0 rgb(23 25 24 / 18%); }
