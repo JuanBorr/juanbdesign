@@ -22,10 +22,12 @@ const {
   placement = 'center',
   alt = title
 } = Astro.props
+
+const isExternal = href.startsWith('http')
 ---
 
 <li class:list={['project-card', placement]} data-reveal>
-  <a href={href} target="_blank" rel="noreferrer">
+  <a href={href} target={isExternal ? '_blank' : undefined} rel={isExternal ? 'noreferrer' : undefined}>
     <div class="project-image">
       <Image src={image} alt={alt} quality="mid" loading="lazy" />
     </div>

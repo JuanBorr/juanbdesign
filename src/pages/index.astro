@@ -1,11 +1,9 @@
 ---
 import Layout from '../layouts/Layout.astro'
 import Card from '../components/Card.astro'
-import revista from '../assets/projects/revista.jpg'
-import poster from '../assets/projects/poster.jpg'
-import pagina from '../assets/projects/web.jpg'
-import japan from '../assets/projects/japanese.jpg'
-import choco from '../assets/projects/choco.jpg'
+import { projects, projectUrl } from '../data/projects'
+
+const [revista, silentHill, portfolio, japaneseStreet, chocolicious] = projects
 ---
 
 <Layout title="Juan Borrero | Diseño gráfico y web">
@@ -31,57 +29,57 @@ import choco from '../assets/projects/choco.jpg'
       <ul class="project-grid" role="list">
         <Card
           index="01"
-          title="Revista de Venus"
-          category="Diseño editorial y dirección de arte"
-          alt="Portada de la Revista Venus"
-          image={revista}
+          title={revista.title}
+          category={revista.category}
+          alt={revista.alt}
+          image={revista.cover}
           placement="feature-left"
-          href="https://www.behance.net/gallery/179763757/Revista-Venus"
+          href={projectUrl(revista)}
         />
         <Card
           index="02"
-          title="Silent Hill"
-          category="Concepto visual y póster"
-          alt="Póster conceptual de Silent Hill"
-          image={poster}
+          title={silentHill.title}
+          category={silentHill.category}
+          alt={silentHill.alt}
+          image={silentHill.cover}
           placement="tall-right"
-          href="https://www.behance.net/gallery/179766499/Concepto-poster-Silent-Hill"
+          href={projectUrl(silentHill)}
         />
         <Card
           index="03"
-          title="Diseño de Portafolio"
-          category="Interfaz y experiencia web"
-          alt="Diseño de portafolio web con estética tecnológica"
-          image={pagina}
+          title={portfolio.title}
+          category={portfolio.category}
+          alt={portfolio.alt}
+          image={portfolio.cover}
           placement="small-left"
-          href="https://www.behance.net/gallery/161188549/Portfolio-Design"
+          href={projectUrl(portfolio)}
         />
         <Card
           index="04"
-          title="Japanese Street"
-          category="Tipografía y composición"
-          alt="Póster inspirado en cultura urbana japonesa"
-          image={japan}
+          title={japaneseStreet.title}
+          category={japaneseStreet.category}
+          alt={japaneseStreet.alt}
+          image={japaneseStreet.cover}
           placement="wide-right"
-          href="https://www.behance.net/gallery/181305745/Japanese-street-poster"
+          href={projectUrl(japaneseStreet)}
         />
         <Card
           index="05"
-          title="Chocolicious"
-          category="Identidad y landing page"
-          alt="Landing page de Chocolicious"
-          image={choco}
+          title={chocolicious.title}
+          category={chocolicious.category}
+          alt={chocolicious.alt}
+          image={chocolicious.cover}
           placement="lower-left"
-          href="https://www.behance.net/gallery/181383799/Chocoliciuos"
+          href={projectUrl(chocolicious)}
         />
         <Card
           index="03"
-          title="Diseño de Portafolio"
-          category="Interfaz y experiencia web"
-          alt="Diseño de portafolio web con estética tecnológica"
-          image={pagina}
+          title={portfolio.title}
+          category={portfolio.category}
+          alt={portfolio.alt}
+          image={portfolio.cover}
           placement="lower-right"
-          href="https://www.behance.net/gallery/161188549/Portfolio-Design"
+          href={projectUrl(portfolio)}
         />
       </ul>
     </section>

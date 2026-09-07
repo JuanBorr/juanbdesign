@@ -1,0 +1,218 @@
+---
+import { Image } from 'astro:assets'
+import Layout from '../../layouts/Layout.astro'
+import { projects, type Project } from '../../data/projects'
+
+export function getStaticPaths() {
+  return projects.map((project) => ({
+    params: { slug: project.slug },
+    props: { project }
+  }))
+}
+
+const { project } = Astro.props as { project: Project }
+const projectIndex = projects.findIndex((item) => item.slug === project.slug)
+const previousProject = projects[(projectIndex - 1 + projects.length) % projects.length]
+const nextProject = projects[(projectIndex + 1) % projects.length]
+---
+
+<Layout title={`${project.title} | Juan Borrero`} description={project.description}>
+  <main class="case-study">
+    <header class="case-hero frame">
+      <a class="back-link" href="/projects">Volver a proyectos</a>
+      <p class="case-number">{project.number}</p>
+      <p class="case-category">{project.category}</p>
+      <h1>{project.title}</h1>
+      <div class="case-cover" data-reveal>
+        <Image src={project.cover} alt={project.alt} quality="mid" />
+      </div>
+    </header>
+
+    <section class="case-intro frame" aria-label={`Información sobre ${project.title}`}>
+      <p class="case-description" data-reveal>{project.description}</p>
+      <dl class="case-meta" data-reveal>
+        <div>
+          <dt>Enfoque</dt>
+          <dd>{project.role}</dd>
+        </div>
+        <div>
+          <dt>Disciplinas</dt>
+          <dd>{project.disciplines.join(' / ')}</dd>
+        </div>
+      </dl>
+    </section>
+
+    <section class="gallery frame" aria-label={`Galería de ${project.title}`}>
+      {project.gallery.map((image, index) => (
+        <figure class:list={['gallery-item', `gallery-item-${(index % 5) + 1}`]} data-reveal>
+          <Image src={image} alt={`${project.title}, pieza ${index + 1}`} quality="mid" loading="lazy" />
+        </figure>
+      ))}
+    </section>
+
+    <nav class="project-nav frame" aria-label="Navegación entre proyectos">
+      <a class="project-nav-link previous" href={`/projects/${previousProject.slug}`}>
+        <span>Anterior</span>
+        <strong>{previousProject.title}</strong>
+      </a>
+      <a class="behance-link" href={project.behanceUrl} target="_blank" rel="noreferrer">Ver proyecto original en Behance</a>
+      <a class="project-nav-link next" href={`/projects/${nextProject.slug}`}>
+        <span>Siguiente</span>
+        <strong>{nextProject.title}</strong>
+      </a>
+    </nav>
+  </main>
+</Layout>
+
+<style>
+  .case-study { padding-block: 116px clamp(72px, 10vw, 150px); }
+
+  .case-hero {
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    gap: 0 20px;
+    align-items: start;
+  }
+
+  .back-link {
+    grid-column: 1 / span 4;
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+    width: fit-content;
+    color: var(--muted);
+    font-size: .74rem;
+    font-weight: 900;
+    letter-spacing: .075em;
+    text-decoration: none;
+    text-transform: uppercase;
+  }
+
+  .back-link::before { content: '←'; margin-right: .55rem; color: var(--accent); font-size: 1.15rem; }
+  .back-link:hover { color: var(--accent); }
+
+  .case-number,
+  .case-category {
+    align-self: end;
+    margin: 0;
+    font-size: .76rem;
+    font-weight: 950;
+    letter-spacing: .085em;
+    text-transform: uppercase;
+  }
+
+  .case-number { grid-column: 9 / span 1; color: var(--accent); }
+  .case-category { grid-column: 10 / -1; }
+
+  h1 {
+    grid-column: 1 / span 10;
+    margin: clamp(68px, 12vw, 150px) 0 clamp(36px, 6vw, 72px);
+    font-size: clamp(4.2rem, 12.5vw, 11.5rem);
+    font-weight: 950;
+    letter-spacing: -.095em;
+    line-height: .72;
+    text-transform: uppercase;
+  }
+
+  .case-cover {
+    grid-column: 3 / -1;
+    border: 2px solid var(--ink);
+    background: var(--ink);
+  }
+
+  .case-cover :global(img) { width: 100%; min-height: min(58vw, 760px); object-fit: cover; }
+
+  .case-intro {
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    gap: clamp(42px, 8vw, 110px) 20px;
+    align-items: end;
+    padding-block: clamp(92px, 13vw, 178px);
+  }
+
+  .case-description {
+    grid-column: 1 / span 7;
+    max-width: 18ch;
+    margin: 0;
+    font-size: clamp(2.2rem, 5vw, 5.4rem);
+    font-weight: 950;
+    letter-spacing: -.065em;
+    line-height: .86;
+  }
+
+  .case-meta { grid-column: 9 / -1; margin: 0; }
+  .case-meta div { padding-block: 18px; border-top: 2px solid var(--ink); }
+  .case-meta div:last-child { border-bottom: 2px solid var(--ink); }
+  dt { margin-bottom: 8px; color: var(--accent); font-size: .7rem; font-weight: 900; letter-spacing: .08em; text-transform: uppercase; }
+  dd { margin: 0; color: var(--muted); font-size: .94rem; font-weight: 700; line-height: 1.2; }
+
+  .gallery {
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    gap: clamp(30px, 5vw, 78px) 20px;
+    align-items: start;
+  }
+
+  .gallery-item { margin: 0; border: 2px solid var(--ink); background: #d0d2cc; overflow: hidden; }
+  .gallery-item :global(img) { width: 100%; height: auto; transition: transform 600ms cubic-bezier(.16, 1, .3, 1); }
+  .gallery-item:hover :global(img) { transform: scale(1.015); }
+  .gallery-item-1 { grid-column: 1 / span 8; }
+  .gallery-item-2 { grid-column: 9 / -1; margin-top: clamp(56px, 12vw, 190px); }
+  .gallery-item-3 { grid-column: 3 / span 5; }
+  .gallery-item-4 { grid-column: 8 / -1; margin-top: clamp(-14px, -2vw, -40px); }
+  .gallery-item-5 { grid-column: 1 / span 7; }
+
+  .project-nav {
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    gap: 20px;
+    align-items: end;
+    margin-top: clamp(100px, 16vw, 220px);
+    padding-top: 25px;
+    border-top: 3px solid var(--ink);
+  }
+
+  .project-nav a { min-height: 44px; text-decoration: none; }
+  .project-nav-link { display: flex; flex-direction: column; gap: 5px; }
+  .project-nav-link span { color: var(--accent); font-size: .7rem; font-weight: 900; letter-spacing: .08em; text-transform: uppercase; }
+  .project-nav-link strong { font-size: clamp(1.25rem, 2.2vw, 2.15rem); font-weight: 950; letter-spacing: -.05em; line-height: .9; text-transform: uppercase; }
+  .previous { grid-column: 1 / span 4; }
+  .next { grid-column: 9 / -1; text-align: right; align-items: flex-end; }
+  .behance-link { grid-column: 5 / span 4; align-self: center; color: var(--muted); font-size: .75rem; font-weight: 900; letter-spacing: .05em; text-align: center; text-decoration: underline; text-decoration-color: var(--accent); text-decoration-thickness: 2px; text-underline-offset: 5px; text-transform: uppercase; }
+  .project-nav a:hover { color: var(--accent); }
+
+  @media (max-width: 860px) {
+    .case-hero, .case-intro, .gallery, .project-nav { grid-template-columns: repeat(6, minmax(0, 1fr)); gap-inline: 14px; }
+    .case-number { grid-column: 4 / span 1; }
+    .case-category { grid-column: 5 / -1; }
+    h1 { grid-column: 1 / -1; }
+    .case-cover { grid-column: 2 / -1; }
+    .case-description { grid-column: 1 / span 4; }
+    .case-meta { grid-column: 4 / -1; }
+    .gallery-item-1 { grid-column: 1 / span 4; }
+    .gallery-item-2 { grid-column: 5 / -1; }
+    .gallery-item-3 { grid-column: 1 / span 3; }
+    .gallery-item-4 { grid-column: 4 / -1; }
+    .gallery-item-5 { grid-column: 1 / span 4; }
+    .previous { grid-column: 1 / span 2; }
+    .behance-link { grid-column: 3 / span 2; }
+    .next { grid-column: 5 / -1; }
+  }
+
+  @media (max-width: 640px) {
+    .case-study { padding-top: 98px; }
+    .case-hero, .case-intro, .gallery, .project-nav { display: block; }
+    .back-link { margin-bottom: 44px; }
+    .case-number, .case-category { display: inline-block; margin: 0 12px 0 0; }
+    h1 { margin-block: 28px 34px; font-size: clamp(3.7rem, 16vw, 5.5rem); }
+    .case-cover :global(img) { min-height: 0; }
+    .case-intro { padding-block: 74px; }
+    .case-description { margin-bottom: 48px; font-size: clamp(2.2rem, 10vw, 3.6rem); }
+    .gallery { display: grid; grid-template-columns: 1fr; gap: 28px; }
+    .gallery-item { grid-column: auto; margin-top: 0; }
+    .project-nav { padding-top: 22px; }
+    .project-nav-link, .behance-link { display: flex; margin-bottom: 28px; }
+    .next { align-items: flex-start; text-align: left; }
+    .behance-link { justify-content: flex-start; text-align: left; }
+  }
+</style>
